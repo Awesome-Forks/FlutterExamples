@@ -20,7 +20,7 @@ Please refer to each project's style guidelines and guidelines for submitting pa
 
 NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 
-# Contributors List
+# Contributors
 
 1. Yourname
 2. 
