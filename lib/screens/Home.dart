@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_examples/screens/Category.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -6,11 +7,30 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<String> choices = ['oprion 1 ', 'option 2'];
+
+  _select(String selected) {
+    print('selected Option');
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Flutter Examples'),
+        actions: <Widget>[
+          PopupMenuButton(
+            onSelected: _select,
+            itemBuilder: (BuildContext context) {
+              return choices.map((String choice) {
+                return PopupMenuItem(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
+          ),
+        ],
       ),
       drawer: Drawer(
         child: ListView(
@@ -52,7 +72,12 @@ class _HomeState extends State<Home> {
             ),
             ListTile(
               title: Text('Category'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MyCustomRoute(builder: (context) => Category()),
+                );
+              },
             ),
             ListTile(
               title: Text('Settings'),
@@ -69,19 +94,26 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: ListView.builder(
-        itemCount: 80,
-        itemBuilder: (_, index) => new Card(
-              elevation: 12.0,
-              child: new Container(
-                padding: new EdgeInsets.symmetric(
-                  vertical: 10.0,
-                  horizontal: 5.0,
-                ),
-                child: new Text('Index ${index + 1}'),
-              ),
-            ),
+      body: new Container(
+        child: new Text('News About Flutter'),
       ),
     );
+  }
+}
+
+class MyCustomRoute<T> extends MaterialPageRoute<T> {
+  MyCustomRoute({ WidgetBuilder builder, RouteSettings settings })
+      : super(builder: builder, settings: settings);
+
+  @override
+  Widget buildTransitions(BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child) {
+    if (settings.isInitialRoute)
+      return child;
+    // Fades between routes. (If you don't want any animation,
+    // just return child.)
+    return new FadeTransition(opacity: animation, child: child);
   }
 }
