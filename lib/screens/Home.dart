@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_examples/screens/Category.dart';
+import 'package:flutter_examples/utils/Constraints.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -64,32 +64,38 @@ class _HomeState extends State<Home> {
             ),
             ListTile(
               title: Text('Home'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, Constraints.ROUTE_HOME);
+              },
             ),
             ListTile(
               title: Text('Profile'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, Constraints.ROUTE_PROFILE);
+              },
             ),
             ListTile(
               title: Text('Category'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MyCustomRoute(builder: (context) => Category()),
-                );
+                Navigator.pushNamed(context, Constraints.ROUTE_CATEGORY);
               },
             ),
             ListTile(
               title: Text('Settings'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, Constraints.ROUTE_SETTINGS);
+              },
             ),
             ListTile(
               title: Text('About'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, Constraints.ROUTE_ABOUT);},
             ),
             ListTile(
               title: Text('Contributor'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, Constraints.ROUTE_CONTRIBUTOR);
+              },
             ),
           ],
         ),
@@ -102,16 +108,13 @@ class _HomeState extends State<Home> {
 }
 
 class MyCustomRoute<T> extends MaterialPageRoute<T> {
-  MyCustomRoute({ WidgetBuilder builder, RouteSettings settings })
+  MyCustomRoute({WidgetBuilder builder, RouteSettings settings})
       : super(builder: builder, settings: settings);
 
   @override
-  Widget buildTransitions(BuildContext context,
-      Animation<double> animation,
-      Animation<double> secondaryAnimation,
-      Widget child) {
-    if (settings.isInitialRoute)
-      return child;
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) {
+    if (settings.isInitialRoute) return child;
     // Fades between routes. (If you don't want any animation,
     // just return child.)
     return new FadeTransition(opacity: animation, child: child);

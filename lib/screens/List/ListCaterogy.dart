@@ -1,42 +1,27 @@
 import 'package:flutter/material.dart';
 
-class Category extends StatefulWidget {
+import 'package:flutter_examples/utils/Constraints.dart';
+
+class ListCaterogy extends StatefulWidget {
   @override
-  _CategoryState createState() => _CategoryState();
+  _ListCaterogyState createState() => _ListCaterogyState();
 }
 
-class _CategoryState extends State<Category> {
-  List<String> category = [
-    'Animation',
-    'Bootsheet',
-    'Buttons',
-    'Cards',
-    'Dashboard',
-    'Forms',
-    'Login',
-    'List',
-    'Profile',
-    'Register',
-    'shopping',
-    'Slivers',
-    'Timeline',
-    'More'
-  ];
-  GlobalKey<ScaffoldState> _key = new GlobalKey();
-  int row = 2;
+class _ListCaterogyState extends State<ListCaterogy> {
+  int row = 1;
+  List<String> items = ['Stripped'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _key,
-      appBar: new AppBar(
-        title: new Text('Category'),
+      appBar: AppBar(
+        title: new Text('Category : List'),
       ),
       body: new GridView.count(
         crossAxisCount: row,
         childAspectRatio: 3.0 / row,
         children: new List<Widget>.generate(
-          category.length,
+          items.length,
           (index) {
             return new GridTile(
               child: InkWell(
@@ -44,13 +29,13 @@ class _CategoryState extends State<Category> {
                   color: Colors.purple[700 - (100 * (index % 5))],
                   child: new Center(
                     child: new Text(
-                      category[index],
+                      items[index],
                       style: TextStyle(fontSize: 18.0, color: Colors.white),
                     ),
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(context, '/${category[index]}');
+                  Navigator.pushNamed(context, Constraints.ROUTE_List_01);
                 },
               ),
             );
