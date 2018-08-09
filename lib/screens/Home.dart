@@ -42,11 +42,11 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Image.network(
-                    'https://avatars1.githubusercontent.com/u/14101776',
-                    width: 60.0,
-                    height: 60.0,
-                  ),
+//                  Image.network(
+//                    'https://avatars1.githubusercontent.com/u/14101776',
+//                    width: 60.0,
+//                    height: 60.0,
+//                  ),
                   Text(
                     'Flutter Examples',
                     style: TextStyle(color: Colors.white, fontSize: 24.0),

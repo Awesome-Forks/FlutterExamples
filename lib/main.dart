@@ -4,7 +4,6 @@ import 'package:flutter_examples/screens/Home.dart';
 import 'package:flutter_examples/utils/routes.dart';
 
 void main() {
-  debugInstrumentationEnabled = true;
   runApp(new MyApp());
 }
 

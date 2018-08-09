@@ -23,22 +23,31 @@ class _List01State extends State<List01> {
 
   getData() async {
     data = [];
-    var Response = await http.get(
-      "https://api.github.com/users/nitishk72",
+    http.get(
+      "https://raw.githubusercontent.com/FlutterExamples/FlutterExamples/master/lib/data/user_info.json",
       headers: {"Accept": "application/json"},
-    );
-    if (Response.statusCode == 200) {
-      String responseBody = Response.body;
-      var users = json.decode(responseBody);
-      for (var user in users) {
-        print(user);
+    ).then((response) {
+      if (response.statusCode == 200) {
+        var resBody = response.body;
+        var users = json.decode(resBody);
+        for (var user in users) {
+          data.add(new UserInfo(
+              name: user['name'],
+              index: user['index'],
+              address: user['address'],
+              company: user['company'],
+              email: user['email'],
+              gender: user['gender'],
+              month: user['month'],
+              phone: user['phone'],
+              year: user['year']));
+        }
+        setState(() {});
+      } else {
+        _key.currentState.showSnackBar(
+            SnackBar(content: new Text('Something went wrong !')));
       }
-      isData = true;
-      setState(() {});
-    } else {
-      _key.currentState
-          .showSnackBar(SnackBar(content: new Text('Something went wrong !')));
-    }
+    });
   }
 
   @override
@@ -48,23 +57,36 @@ class _List01State extends State<List01> {
       appBar: new AppBar(
         title: Text('Stripped Backgroud'),
       ),
-      body: ListView.builder(
-          itemCount: 20, itemBuilder: (_, index) => ListUI(index)),
+      body: Container(
+        color: Colors.grey,
+    child: ListView.builder(
+        itemCount: data.length, itemBuilder: (_, index) => ListUI(index)),
+      ),
     );
   }
 
   Widget ListUI(int index) {
+    UserInfo user = data[index];
     return Container(
+      margin: EdgeInsets.all(2.0),
       padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
-      color: (index + 1) % 2 == 0 ? Colors.blueGrey : Colors.white,
+      color: (index + 1) % 2 == 0 ? Color(0xFFe0e9ff) : Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Center(
-            child: new Text('Data'),
+            child: new Text(
+              '${user.month} - ${user.year}',
+              style: Theme.of(context).textTheme.title,
+            ),
           ),
-          new Text('Data')
+          Divider(),
+          new Text('Name : ${user.name}'),
+          new Text('Phone : ${user.phone}'),
+          new Text('Email : ${user.email}'),
+          new Text('Company : ${user.company}'),
+          new Text('Gender : ${user.gender}'),
         ],
       ),
     );
