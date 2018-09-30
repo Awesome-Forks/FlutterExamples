@@ -9,6 +9,12 @@ class Constraints {
 //  List Category
   static const String ROUTE_LIST = "/List";
   static const String ROUTE_List_01 = '/List/01';
+//  Login Category
+  static const String ROUTE_Login = "/Login";
+  static const String ROUTE_Login_01 = '/Login/01';
+//  Login Category
+  static const String ROUTE_Welcome = "/Welcome";
+  static const String ROUTE_Welcome_01 = '/Welcome/01';
 //  Dashboard
   static const String ROUTE_Dashboard = '/Dashboard';
   static const String ROUTE_Dashboard_01 = '/Dashboard/01';

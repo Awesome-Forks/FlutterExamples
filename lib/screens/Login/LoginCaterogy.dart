@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_examples/utils/Constraints.dart';
 import 'package:flutter_examples/utils/routemodal.dart';
 
-class DashboardCategory extends StatefulWidget {
+class LoginCaterogy extends StatefulWidget {
   @override
-  _DashboardCategoryState createState() => _DashboardCategoryState();
+  _LoginCaterogyState createState() => _LoginCaterogyState();
 }
 
-class _DashboardCategoryState extends State<DashboardCategory> {
+class _LoginCaterogyState extends State<LoginCaterogy> {
   int row = 1;
   List<RouteModal> items = [
-    new RouteModal('Sample 1', Constraints.ROUTE_Dashboard_01),
-    new RouteModal('Sample 2', Constraints.ROUTE_Dashboard_02),
+    new RouteModal('Sample 1', Constraints.ROUTE_Login_01),
   ];
 
   @override

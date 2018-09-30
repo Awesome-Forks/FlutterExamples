@@ -20,6 +20,7 @@ class _CategoryState extends State<Category> {
     'shopping',
     'Slivers',
     'Timeline',
+    'Welcome',
     'More'
   ];
   GlobalKey<ScaffoldState> _key = new GlobalKey();

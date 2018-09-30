@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_examples/utils/Constraints.dart';
 import 'package:flutter_examples/utils/routemodal.dart';
 
-class DashboardCategory extends StatefulWidget {
+class WelcomeCaterogy extends StatefulWidget {
   @override
-  _DashboardCategoryState createState() => _DashboardCategoryState();
+  _WelcomeCaterogyState createState() => _WelcomeCaterogyState();
 }
 
-class _DashboardCategoryState extends State<DashboardCategory> {
+class _WelcomeCaterogyState extends State<WelcomeCaterogy> {
   int row = 1;
   List<RouteModal> items = [
-    new RouteModal('Sample 1', Constraints.ROUTE_Dashboard_01),
-    new RouteModal('Sample 2', Constraints.ROUTE_Dashboard_02),
+    new RouteModal('Sample 1', Constraints.ROUTE_Welcome_01),
   ];
 
   @override
@@ -26,7 +25,7 @@ class _DashboardCategoryState extends State<DashboardCategory> {
         childAspectRatio: 3.0 / row,
         children: new List<Widget>.generate(
           items.length,
-          (index) {
+              (index) {
             return new GridTile(
               child: InkWell(
                 child: new Card(
