@@ -12,6 +12,7 @@ class Constraints {
 //  Dashboard
   static const String ROUTE_Dashboard = '/Dashboard';
   static const String ROUTE_Dashboard_01 = '/Dashboard/01';
+  static const String ROUTE_Dashboard_02 = '/Dashboard/02';
 //  Dashboard
   static const String ROUTE_Slivers = '/Slivers';
   static const String ROUTE_Slivers_01 = '/Slivers/01';

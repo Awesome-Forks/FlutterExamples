@@ -6,6 +6,8 @@ This is a Open Source Flutter Examples with examples.
 
 ![Category Page View](https://github.com/FlutterExamples/FlutterExamples/raw/master/screenshots/category.png)
 
+![Dashboard 2](https://github.com/FlutterExamples/FlutterExamples/raw/master/screenshots/dashboard_02.png)
+
 Issues
 ------
 
